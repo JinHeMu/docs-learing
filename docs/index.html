@@ -35,8 +35,29 @@
 <script>
   window.$docsify = {
     loadSidebar: true,
-    subMaxLevel: 2
+    subMaxLevel: 3
   }
 </script>
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
 
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'Github Application Client ID',
+    clientSecret: 'Github Application Client Secret',
+    repo: 'Github repo',
+    owner: 'Github repo owner',
+    admin: ['Github repo collaborators, only these guys can initialize github issues'],
+    // facebook-like distraction free mode
+    distractionFreeMode: false
+  })
+</script>
