@@ -837,3 +837,202 @@ int main() {
 ```
 
 在这个示例中，`sharedPtr` 持有一个 `int` 类型的共享指针，当程序离开 `main` 函数时，`sharedPtr` 会自动释放分配的内存。这允许您安全地使用动态分配的资源而无需手动释放它们。
+
+## 复制和拷贝构造函数(不懂)
+
+在C++中，复制和拷贝构造函数是用于创建一个对象的副本的两种方式。它们通常用于类的对象，以便在不修改原始对象的情况下创建新对象，或者在对象之间传递值。
+
+1. 复制构造函数（Copy Constructor）:
+复制构造函数是一种特殊的构造函数，用于创建一个新对象，该新对象是已存在对象的副本。复制构造函数的原型如下：
+
+```cpp
+ClassName(const ClassName &other);
+```
+
+其中，`ClassName` 是类的名称，`other` 是要复制的已存在对象。复制构造函数通常以引用方式接受参数，以避免不必要的对象复制，提高效率。复制构造函数会复制已存在对象的成员变量到新对象，以创建一个一模一样的新对象。
+
+示例：
+
+```cpp
+class MyString {
+public:
+    MyString(const MyString &other);  // 复制构造函数
+    // 其他成员和方法
+};
+```
+
+2. 拷贝构造函数（Copy Assignment Operator）:
+拷贝构造函数用于将一个已存在对象的值赋给另一个已存在对象，而不是创建一个新对象。拷贝构造函数的原型如下：
+
+```cpp
+ClassName &operator=(const ClassName &other);
+```
+
+其中，`ClassName` 是类的名称，`other` 是要从中复制值的已存在对象。拷贝构造函数通常返回一个引用，以允许多次赋值操作，以及链式赋值操作。
+
+示例：
+
+```cpp
+class MyString {
+public:
+    MyString &operator=(const MyString &other);  // 拷贝构造函数
+    // 其他成员和方法
+};
+```
+
+请注意，拷贝构造函数和复制构造函数在名称和工作方式上有所不同，因此要根据需要选择适当的函数来创建新对象或将值复制到已存在对象。通常情况下，编译器会自动生成默认的复制构造函数和拷贝构造函数，但如果类中包含指针或资源管理，你可能需要手动编写它们以确保正确的复制和赋值行为。
+
+## 箭头操作符
+
+在C++中，箭头操作符 `->` 通常用于访问类的成员函数和成员变量，当操作对象是指向类对象的指针时特别有用。箭头操作符的主要用途是通过指针间接访问成员。
+
+通常，当你有一个指向类对象的指针，并想要调用该对象的成员函数或访问其成员变量时，你可以使用箭头操作符 `->`。
+
+下面是一些示例：
+
+1. 访问成员变量：
+
+```cpp
+class MyClass {
+public:
+    int value;
+};
+
+MyClass obj;
+obj.value = 42;  // 直接访问对象的成员变量
+
+MyClass* ptr = &obj;
+ptr->value = 24; // 使用箭头操作符通过指针访问对象的成员变量
+```
+
+2. 调用成员函数：
+
+```cpp
+class MyClass {
+public:
+    void print() {
+        std::cout << "Hello, World!" << std::endl;
+    }
+};
+
+MyClass obj;
+obj.print();  // 直接调用对象的成员函数
+
+MyClass* ptr = &obj;
+ptr->print(); // 使用箭头操作符通过指针调用对象的成员函数
+```
+
+箭头操作符使你能够以类似于直接访问对象的方式来操作对象的成员，但通过指针进行间接操作。这对于处理动态分配的对象或操作类的对象数组时非常有用。
+
+需要注意的是，箭头操作符 `->` 仅适用于指向类对象的指针。如果你有一个类对象而不是指针，应该使用点操作符 `.` 来访问成员。
+
+## 动态数组
+
+动态数组是一种在程序运行时动态分配内存的数据结构，允许你在不提前知道数组大小的情况下存储和管理数据。C++中，你可以使用标准库容器（例如`std::vector`）来创建动态数组，也可以使用动态分配的静态数组（使用`new`和`delete`关键字）。
+
+下面是两种创建动态数组的方法：
+
+1. 使用 `std::vector`（标准库容器）：
+
+```cpp
+#include <vector>
+
+std::vector<int> dynamicArray; // 创建一个动态整数数组
+
+dynamicArray.push_back(10);    // 向数组中添加元素
+dynamicArray.push_back(20);
+dynamicArray.push_back(30);
+
+// 访问数组元素
+int value = dynamicArray[1]; // 获取索引为1的元素，值为20
+```
+
+`std::vector`会自动管理内存，可以自动扩展和收缩数组，不需要手动分配和释放内存。
+
+2. 使用动态分配的静态数组：
+
+```cpp
+int* dynamicArray = new int[3]; // 创建一个具有3个整数的动态数组
+
+dynamicArray[0] = 10; // 设置数组元素的值
+dynamicArray[1] = 20;
+dynamicArray[2] = 30;
+
+// 访问数组元素
+int value = dynamicArray[1]; // 获取索引为1的元素，值为20
+
+// 记得释放内存，以防止内存泄漏
+delete[] dynamicArray;
+```
+
+使用 `new` 和 `delete` 分配和释放内存时，务必小心，确保在不再需要数组时释放内存，以防止内存泄漏。
+
+通常情况下，使用 `std::vector` 更安全和方便，因为它自动处理内存管理，而不需要手动释放内存。只有在需要更多控制时才使用动态分配的静态数组。
+
+## stdvector的优化问题
+
+`std::vector` 是 C++ 标准库中的动态数组容器，通常提供了高效的随机访问和动态大小调整的功能。然而，为了充分利用 `std::vector` 的性能，并避免不必要的开销，你可以考虑以下一些优化建议：
+
+1. 预分配容量：`std::vector` 动态增长时会分配新的内存块，这可能导致重新分配和复制元素的开销。如果你知道 `std::vector` 预计会存储大量元素，可以使用 `reserve` 函数来预分配足够的容量，以减少重新分配的次数。
+
+   ```cpp
+   std::vector<int> myVector;
+   myVector.reserve(1000); // 预分配1000个元素的容量
+   ```
+
+2. 使用移动语义：C++11 引入了移动语义，允许将资源从一个对象转移到另一个对象，而不必进行深层复制。当你需要将一个 `std::vector` 转移到另一个时，可以使用移动语义来提高性能。
+
+   ```cpp
+   std::vector<int> sourceVector;
+   // 填充 sourceVector
+   std::vector<int> targetVector = std::move(sourceVector); // 移动 sourceVector 到 targetVector
+   ```
+
+3. 避免频繁插入和删除：频繁的插入和删除操作可能导致 `std::vector` 多次重新分配内存和复制元素，影响性能。如果需要频繁插入和删除操作，考虑使用 `std::deque` 或 `std::list` 等数据结构，它们对插入和删除操作更高效。
+
+4. 使用范围迭代器：C++11 引入了范围迭代器，可以通过范围 for 循环更容易地迭代 `std::vector` 中的元素。这通常比传统的索引迭代更安全和方便。
+
+   ```cpp
+   for (const int &element : myVector) {
+       // 访问 element
+   }
+   ```
+
+5. 使用成员函数而不是 STL 算法：`std::vector` 提供了一些成员函数，如 `push_back`、`pop_back`、`emplace_back` 等，它们在特定情况下可能比使用标准库算法更高效。
+
+6. 使用合适的数据类型：选择合适的数据类型，以减少内存占用和提高性能。如果只需要存储整数，不要使用 `std::vector<double>`，而是使用 `std::vector<int>`。
+
+7. 小心避免无效的迭代器：当插入或删除元素后，迭代器可能会变得无效。确保在使用迭代器时不会引发未定义行为。
+
+综而言之，优化 `std::vector` 的性能通常涉及到合理的内存管理、使用移动语义、避免不必要的复制和重新分配，以及根据特定需求选择合适的容器类型。最佳优化策略通常取决于具体的应用场景。
+
+`emplace_back` 是 C++ 标准库中 `std::vector` 类的成员函数之一，用于在动态数组的末尾添加新元素。与 `push_back` 不同，`emplace_back` 允许你通过参数传递给元素类型的构造函数，直接在 `std::vector` 中构造新元素，而不需要创建一个临时对象。
+
+以下是 `emplace_back` 的用法示例：
+
+```cpp
+#include <vector>
+
+struct MyClass {
+    int x;
+    double y;
+
+    MyClass(int a, double b) : x(a), y(b) {}
+};
+
+int main() {
+    std::vector<MyClass> myVector;
+
+    // 使用 emplace_back 直接在 vector 中构造新元素
+    myVector.emplace_back(42, 3.14);
+    myVector.emplace_back(10, 2.71);
+
+    // myVector 现在包含两个 MyClass 对象，而不是两个临时对象
+
+    return 0;
+}
+```
+
+在上述示例中，`emplace_back` 接受构造函数的参数，并直接在 `std::vector` 中构造新的 `MyClass` 对象。这可以避免创建临时对象并进行不必要的复制，从而提高性能。
+
+`emplace_back` 对于避免不必要的对象复制和移动非常有用，特别是当元素类型的构造函数包含多个参数时。它允许你以更直接的方式向 `std::vector` 添加元素，而不需要手动创建临时对象，然后再将它们添加到容器中。
