@@ -1036,3 +1036,164 @@ int main() {
 在上述示例中，`emplace_back` 接受构造函数的参数，并直接在 `std::vector` 中构造新的 `MyClass` 对象。这可以避免创建临时对象并进行不必要的复制，从而提高性能。
 
 `emplace_back` 对于避免不必要的对象复制和移动非常有用，特别是当元素类型的构造函数包含多个参数时。它允许你以更直接的方式向 `std::vector` 添加元素，而不需要手动创建临时对象，然后再将它们添加到容器中。
+
+## 处理多个返回值
+
+在 C++ 中，处理多个返回值有几种常见的方法。这些方法包括：
+
+1. **使用结构体或类**：你可以创建一个自定义的结构体或类，将多个值打包到一个对象中，然后从函数中返回该对象。这种方法非常灵活，因为你可以定义包含任意数量的数据成员的结构体或类。
+
+   ```cpp
+   struct Result {
+       int value1;
+       double value2;
+   };
+
+   Result myFunction() {
+       Result result;
+       result.value1 = 42;
+       result.value2 = 3.14;
+       return result;
+   }
+
+   int main() {
+       Result result = myFunction();
+       std::cout << "Value 1: " << result.value1 << std::endl;
+       std::cout << "Value 2: " << result.value2 << std::endl;
+       return 0;
+   }
+   ```
+
+2. **使用 `std::tuple`**：C++标准库提供了 `std::tuple`，它是一个通用的类模板，用于将多个值组合在一起。你可以将多个返回值打包到 `std::tuple` 中，然后返回它。
+
+   ```cpp
+   #include <tuple>
+
+   std::tuple<int, double> myFunction() {
+       return std::make_tuple(42, 3.14);
+   }
+
+   int main() {
+       std::tuple<int, double> result = myFunction();
+       int value1;
+       double value2;
+       std::tie(value1, value2) = result;
+       std::cout << "Value 1: " << value1 << std::endl;
+       std::cout << "Value 2: " << value2 << std::endl;
+       return 0;
+   }
+   ```
+
+3. **使用引用参数**：你可以通过函数的参数传递一个或多个引用参数，以在函数内部修改多个值，然后返回单个值，表示操作的成功或失败。这种方式通常用于需要返回状态信息的情况。
+
+   ```cpp
+   bool myFunction(int& value1, double& value2) {
+       value1 = 42;
+       value2 = 3.14;
+       return true; // 表示操作成功
+   }
+   
+   int main() {
+       int v1;
+       double v2;
+       if (myFunction(v1, v2)) {
+           std::cout << "Value 1: " << v1 << std::endl;
+           std::cout << "Value 2: " << v2 << std::endl;
+       }
+       return 0;
+   }
+   ```
+
+每种方法都有其用途，你可以根据具体的需求和编程风格选择最适合的方法来处理多个返回值。结构体/类和 `std::tuple` 通常用于返回多个相关的值，而引用参数通常用于返回状态信息和多个值的组合。
+
+## 模板
+
+```c++
+template<typename T>
+void Print(T value)
+{
+    std::cout << value << std::endl;
+}
+
+int main()
+{
+    Print<int>(5);
+    Print("hello");
+    Print(5.5f);
+}//模板用来指定类型
+```
+
+```c++
+template<int size>
+class Array
+{
+private:
+    int m_Array[size];
+public:
+    int GetSize() const { return size; }
+};
+
+int main()
+{
+    Array<5> a{};
+    std::cout << a.GetSize() << std::endl;
+}//用模板来指定大小
+```
+
+C++ 模板是一种强大的编程工具，允许你编写通用代码，以处理不同数据类型的数据，同时保持代码的可重用性。模板可以应用于函数、类、和类的成员函数，允许你在编译时生成不同的特化版本，以满足特定数据类型的需求。下面是有关 C++ 模板的一些重要概念：
+
+1. **函数模板**：函数模板允许你编写一个通用的函数，可以操作不同数据类型的参数。你可以在函数中使用模板参数来表示数据类型，并使用这些参数来执行相同的操作。函数模板使用 `template` 关键字定义，通常在函数声明前声明模板参数。
+
+   ```cpp
+   template <typename T>
+   T add(T a, T b) {
+       return a + b;
+   }
+   ```
+
+2. **类模板**：类模板允许你创建一个通用的类，可以包含不同数据类型的成员变量和成员函数。类模板使用 `template` 关键字定义，通常在类声明前声明模板参数。
+
+   ```cpp
+   template <typename T>
+   class MyContainer {
+   public:
+       MyContainer(T value) : data(value) {}
+       T getData() { return data; }
+   private:
+       T data;
+   };
+   ```
+
+3. **模板参数**：模板参数是你在模板中定义的占位符，表示特定数据类型。可以使用 `typename` 或 `class` 关键字定义模板参数。
+
+4. **模板特化**：你可以创建模板的特化版本，以处理特定数据类型的需求。模板特化允许你为某些数据类型提供自定义实现。
+
+   ```cpp
+   template <>
+   double add(double a, double b) {
+       return a + b + 1.0;
+   }
+   ```
+
+5. **模板函数的实例化**：模板函数在编译时根据具体的数据类型实例化。当你调用模板函数时，编译器会根据参数的数据类型生成适当的函数。
+
+   ```cpp
+   int result = add(5, 3); // 编译器生成 add<int>(5, 3)
+   ```
+
+6. **模板类的实例化**：模板类也在编译时根据具体的数据类型实例化。你可以声明一个特定数据类型的对象来实例化模板类。
+
+   ```cpp
+   MyContainer<int> container(42);
+   ```
+
+7. **非类型模板参数**：除了表示数据类型的模板参数，C++ 还支持非类型模板参数，它们可以表示常量值、枚举、整数等。
+
+   ```cpp
+   template <int N>
+   struct Array {
+       int data[N];
+   };
+   ```
+
+C++ 模板提供了强大的泛型编程能力，使你能够编写通用的代码，从而提高代码的重用性和可维护性。模板在标准库中广泛使用，例如 STL（标准模板库）中的容器、算法等都是基于模板的。
