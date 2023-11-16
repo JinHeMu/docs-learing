@@ -2,46 +2,46 @@
 
 ## Terminaor
 
-### 第一部份：关于在同一个标签内的操作
-Alt+Up                          移动到上面的终端  
-Alt+Down                        移动到下面的终端  
-Alt+Left                        移动到左边的终端  
-Alt+Right                       移动到右边的终端  
-Ctrl+Shift+O                    水平分割终端  
-Ctrl+Shift+E                    垂直分割终端  
-Ctrl+Shift+Right                在垂直分割的终端中将分割条向右移动  
-Ctrl+Shift+Left                在垂直分割的终端中将分割条向左移动  
-Ctrl+Shift+Up                   在水平分割的终端中将分割条向上移动  
-Ctrl+Shift+Down                 在水平分割的终端中将分割条向下移动  
-Ctrl+Shift+S                    隐藏/显示滚动条  
-Ctrl+Shift+F                    搜索  
-Ctrl+Shift+C                    复制选中的内容到剪贴板  
-Ctrl+Shift+V                    粘贴剪贴板的内容到此处  
-Ctrl+Shift+W                    关闭当前终端  
-Ctrl+Shift+Q                    退出当前窗口，当前窗口的所有终端都将被关闭  
-Ctrl+Shift+X                    最大化显示当前终端  
-Ctrl+Shift+Z                    最大化显示当前终端并使字体放大  
-Ctrl+Shift+N or Ctrl+Tab        移动到下一个终端  
-Ctrl+Shift+P or Ctrl+Shift+Tab  Crtl+Shift+Tab 移动到之前的一个终端  
+//第一部份：关于在同一个标签内的操作
+Alt+Up                          //移动到上面的终端
+Alt+Down                        //移动到下面的终端
+Alt+Left                        //移动到左边的终端
+Alt+Right                       //移动到右边的终端
+Ctrl+Shift+O                    //水平分割终端
+Ctrl+Shift+E                    //垂直分割终端
+Ctrl+Shift+Right                //在垂直分割的终端中将分割条向右移动
+Ctrl+Shift+Left                 //在垂直分割的终端中将分割条向左移动
+Ctrl+Shift+Up                   //在水平分割的终端中将分割条向上移动
+Ctrl+Shift+Down                 //在水平分割的终端中将分割条向下移动
+Ctrl+Shift+S                    //隐藏/显示滚动条
+Ctrl+Shift+F                    //搜索
+Ctrl+Shift+C                    //复制选中的内容到剪贴板
+Ctrl+Shift+V                    //粘贴剪贴板的内容到此处
+Ctrl+Shift+W                    //关闭当前终端
+Ctrl+Shift+Q                    //退出当前窗口，当前窗口的所有终端都将被关闭
+Ctrl+Shift+X                    //最大化显示当前终端
+Ctrl+Shift+Z                    //最大化显示当前终端并使字体放大
+Ctrl+Shift+N or Ctrl+Tab        //移动到下一个终端
+Ctrl+Shift+P or Ctrl+Shift+Tab  //Crtl+Shift+Tab 移动到之前的一个终端
 
-### 第二部份：有关各个标签之间的操作
-F11                             全屏开关  
-Ctrl+Shift+T                    打开一个新的标签  
-Ctrl+PageDown                   移动到下一个标签  
-Ctrl+PageUp                     移动到上一个标签  
-Ctrl+Shift+PageDown             将当前标签与其后一个标签交换位置  
-Ctrl+Shift+PageUp               将当前标签与其前一个标签交换位置  
-Ctrl+Plus (+)                   增大字体  
-Ctrl+Minus (-)                  减小字体  
-Ctrl+Zero (0)                   恢复字体到原始大小  
-Ctrl+Shift+R                    重置终端状态  
-Ctrl+Shift+G                    重置终端状态并clear屏幕  
-Super+g                         绑定所有的终端，以便向一个输入能够输入到所有的终端  
-Super+Shift+G                   解除绑定  
-Super+t                         绑定当前标签的所有终端，向一个终端输入的内容会自动输入到其他终端  
-Super+Shift+T                   解除绑定  
-Ctrl+Shift+I                    打开一个窗口，新窗口与原来的窗口使用同一个进程  
-Super+i                         打开一个新窗口，新窗口与原来的窗口使用不同的进程  
+//第二部份：有关各个标签之间的操作
+F11                             //全屏开关
+Ctrl+Shift+T                    //打开一个新的标签
+Ctrl+PageDown                   //移动到下一个标签
+Ctrl+PageUp                     //移动到上一个标签
+Ctrl+Shift+PageDown             //将当前标签与其后一个标签交换位置
+Ctrl+Shift+PageUp               //将当前标签与其前一个标签交换位置
+Ctrl+Plus (+)                   //增大字体
+Ctrl+Minus (-)                  //减小字体
+Ctrl+Zero (0)                   //恢复字体到原始大小
+Ctrl+Shift+R                    //重置终端状态
+Ctrl+Shift+G                    //重置终端状态并clear屏幕
+Super+g                         //绑定所有的终端，以便向一个输入能够输入到所有的终端
+Super+Shift+G                   //解除绑定
+Super+t                         //绑定当前标签的所有终端，向一个终端输入的内容会自动输入到其他终端
+Super+Shift+T                   //解除绑定
+Ctrl+Shift+I                    //打开一个窗口，新窗口与原来的窗口使用同一个进程
+Super+i                         //打开一个新窗口，新窗口与原来的窗口使用不同的进程
 
 
 ## ROS学习
@@ -1086,3 +1086,1468 @@ Copy
 这是一个阻塞式函数，只有服务启动成功后才会继续执行
 
 此处可以使用 launch 文件优化，但是需要注意 args 传参特点
+
+### 参数服务器理论模型
+
+参数服务器实现是最为简单的，该模型如下图所示,该模型中涉及到三个角色:
+
+- ROS Master (管理者)
+- Talker (参数设置者)
+- Listener (参数调用者)
+
+ROS Master 作为一个公共容器保存参数，Talker 可以向容器中设置参数，Listener 可以获取参数。
+
+![img](http://www.autolabor.com.cn/book/ROSTutorials/assets/03ROS%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B603_%E5%8F%82%E6%95%B0%E6%9C%8D%E5%8A%A1%E5%99%A8.jpg)
+
+整个流程由以下步骤实现:
+
+#### 1.Talker 设置参数
+
+Talker 通过 RPC 向参数服务器发送参数(包括参数名与参数值)，ROS Master 将参数保存到参数列表中。
+
+#### 2.Listener 获取参数
+
+Listener 通过 RPC 向参数服务器发送参数查找请求，请求中包含要查找的参数名。
+
+#### 3.ROS Master 向 Listener 发送参数值
+
+ROS Master 根据步骤2请求提供的参数名查找参数值，并将查询结果通过 RPC 发送给 Listener。
+
+------
+
+参数可使用数据类型:
+
+- 32-bit integers
+- booleans
+- strings
+- doubles
+- iso8601 dates
+- lists
+- base64-encoded binary data
+- 字典
+
+> 注意:参数服务器不是为高性能而设计的，因此最好用于存储静态的非二进制的简单数据
+
+###  参数操作A(C++)
+
+**需求:**实现参数服务器参数的增删改查操作。
+
+在 C++ 中实现参数服务器数据的增删改查，可以通过两套 API 实现:
+
+- ros::NodeHandle
+- ros::param
+
+下面为具体操作演示
+
+#### 1.参数服务器新增(修改)参数
+
+```cpp
+/*
+    参数服务器操作之新增与修改(二者API一样)_C++实现:
+    在 roscpp 中提供了两套 API 实现参数操作
+    ros::NodeHandle
+        setParam("键",值)
+    ros::param
+        set("键","值")
+
+    示例:分别设置整形、浮点、字符串、bool、列表、字典等类型参数
+        修改(相同的键，不同的值)
+
+*/
+#include "ros/ros.h"
+
+int main(int argc, char *argv[])
+{
+    ros::init(argc,argv,"set_update_param");
+
+    std::vector<std::string> stus;
+    stus.push_back("zhangsan");
+    stus.push_back("李四");
+    stus.push_back("王五");
+    stus.push_back("孙大脑袋");
+
+    std::map<std::string,std::string> friends;
+    friends["guo"] = "huang";
+    friends["yuang"] = "xiao";
+
+    //NodeHandle--------------------------------------------------------
+    ros::NodeHandle nh;
+    nh.setParam("nh_int",10); //整型
+    nh.setParam("nh_double",3.14); //浮点型
+    nh.setParam("nh_bool",true); //bool
+    nh.setParam("nh_string","hello NodeHandle"); //字符串
+    nh.setParam("nh_vector",stus); // vector
+    nh.setParam("nh_map",friends); // map
+
+    //修改演示(相同的键，不同的值)
+    nh.setParam("nh_int",10000);
+
+    //param--------------------------------------------------------
+    ros::param::set("param_int",20);
+    ros::param::set("param_double",3.14);
+    ros::param::set("param_string","Hello Param");
+    ros::param::set("param_bool",false);
+    ros::param::set("param_vector",stus);
+    ros::param::set("param_map",friends);
+
+    //修改演示(相同的键，不同的值)
+    ros::param::set("param_int",20000);
+
+    return 0;
+}
+Copy
+```
+
+#### 2.参数服务器获取参数
+
+```cpp
+/*
+    参数服务器操作之查询_C++实现:
+    在 roscpp 中提供了两套 API 实现参数操作
+    ros::NodeHandle
+
+        param(键,默认值) 
+            存在，返回对应结果，否则返回默认值
+
+        getParam(键,存储结果的变量)
+            存在,返回 true,且将值赋值给参数2
+            若果键不存在，那么返回值为 false，且不为参数2赋值
+
+        getParamCached键,存储结果的变量)--提高变量获取效率
+            存在,返回 true,且将值赋值给参数2
+            若果键不存在，那么返回值为 false，且不为参数2赋值
+
+        getParamNames(std::vector<std::string>)
+            获取所有的键,并存储在参数 vector 中 
+
+        hasParam(键)
+            是否包含某个键，存在返回 true，否则返回 false
+
+        searchParam(参数1，参数2)
+            搜索键，参数1是被搜索的键，参数2存储搜索结果的变量
+
+    ros::param ----- 与 NodeHandle 类似
+
+
+
+
+
+*/
+
+#include "ros/ros.h"
+
+int main(int argc, char *argv[])
+{
+    setlocale(LC_ALL,"");
+    ros::init(argc,argv,"get_param");
+
+    //NodeHandle--------------------------------------------------------
+    /*
+    ros::NodeHandle nh;
+    // param 函数
+    int res1 = nh.param("nh_int",100); // 键存在
+    int res2 = nh.param("nh_int2",100); // 键不存在
+    ROS_INFO("param获取结果:%d,%d",res1,res2);
+
+    // getParam 函数
+    int nh_int_value;
+    double nh_double_value;
+    bool nh_bool_value;
+    std::string nh_string_value;
+    std::vector<std::string> stus;
+    std::map<std::string, std::string> friends;
+
+    nh.getParam("nh_int",nh_int_value);
+    nh.getParam("nh_double",nh_double_value);
+    nh.getParam("nh_bool",nh_bool_value);
+    nh.getParam("nh_string",nh_string_value);
+    nh.getParam("nh_vector",stus);
+    nh.getParam("nh_map",friends);
+
+    ROS_INFO("getParam获取的结果:%d,%.2f,%s,%d",
+            nh_int_value,
+            nh_double_value,
+            nh_string_value.c_str(),
+            nh_bool_value
+            );
+    for (auto &&stu : stus)
+    {
+        ROS_INFO("stus 元素:%s",stu.c_str());        
+    }
+
+    for (auto &&f : friends)
+    {
+        ROS_INFO("map 元素:%s = %s",f.first.c_str(), f.second.c_str());
+    }
+
+    // getParamCached()
+    nh.getParamCached("nh_int",nh_int_value);
+    ROS_INFO("通过缓存获取数据:%d",nh_int_value);
+
+    //getParamNames()
+    std::vector<std::string> param_names1;
+    nh.getParamNames(param_names1);
+    for (auto &&name : param_names1)
+    {
+        ROS_INFO("名称解析name = %s",name.c_str());        
+    }
+    ROS_INFO("----------------------------");
+
+    ROS_INFO("存在 nh_int 吗? %d",nh.hasParam("nh_int"));
+    ROS_INFO("存在 nh_intttt 吗? %d",nh.hasParam("nh_intttt"));
+
+    std::string key;
+    nh.searchParam("nh_int",key);
+    ROS_INFO("搜索键:%s",key.c_str());
+    */
+    //param--------------------------------------------------------
+    ROS_INFO("++++++++++++++++++++++++++++++++++++++++");
+    int res3 = ros::param::param("param_int",20); //存在
+    int res4 = ros::param::param("param_int2",20); // 不存在返回默认
+    ROS_INFO("param获取结果:%d,%d",res3,res4);
+
+    // getParam 函数
+    int param_int_value;
+    double param_double_value;
+    bool param_bool_value;
+    std::string param_string_value;
+    std::vector<std::string> param_stus;
+    std::map<std::string, std::string> param_friends;
+
+    ros::param::get("param_int",param_int_value);
+    ros::param::get("param_double",param_double_value);
+    ros::param::get("param_bool",param_bool_value);
+    ros::param::get("param_string",param_string_value);
+    ros::param::get("param_vector",param_stus);
+    ros::param::get("param_map",param_friends);
+
+    ROS_INFO("getParam获取的结果:%d,%.2f,%s,%d",
+            param_int_value,
+            param_double_value,
+            param_string_value.c_str(),
+            param_bool_value
+            );
+    for (auto &&stu : param_stus)
+    {
+        ROS_INFO("stus 元素:%s",stu.c_str());        
+    }
+
+    for (auto &&f : param_friends)
+    {
+        ROS_INFO("map 元素:%s = %s",f.first.c_str(), f.second.c_str());
+    }
+
+    // getParamCached()
+    ros::param::getCached("param_int",param_int_value);
+    ROS_INFO("通过缓存获取数据:%d",param_int_value);
+
+    //getParamNames()
+    std::vector<std::string> param_names2;
+    ros::param::getParamNames(param_names2);
+    for (auto &&name : param_names2)
+    {
+        ROS_INFO("名称解析name = %s",name.c_str());        
+    }
+    ROS_INFO("----------------------------");
+
+    ROS_INFO("存在 param_int 吗? %d",ros::param::has("param_int"));
+    ROS_INFO("存在 param_intttt 吗? %d",ros::param::has("param_intttt"));
+
+    std::string key;
+    ros::param::search("param_int",key);
+    ROS_INFO("搜索键:%s",key.c_str());
+
+    return 0;
+}
+Copy
+```
+
+#### 3.参数服务器删除参数
+
+```cpp
+/* 
+    参数服务器操作之删除_C++实现:
+
+    ros::NodeHandle
+        deleteParam("键")
+        根据键删除参数，删除成功，返回 true，否则(参数不存在)，返回 false
+
+    ros::param
+        del("键")
+        根据键删除参数，删除成功，返回 true，否则(参数不存在)，返回 false
+
+
+*/
+#include "ros/ros.h"
+
+
+int main(int argc, char *argv[])
+{   
+    setlocale(LC_ALL,"");
+    ros::init(argc,argv,"delete_param");
+
+    ros::NodeHandle nh;
+    bool r1 = nh.deleteParam("nh_int");
+    ROS_INFO("nh 删除结果:%d",r1);
+
+    bool r2 = ros::param::del("param_int");
+    ROS_INFO("param 删除结果:%d",r2);
+
+    return 0;
+}
+```
+
+### 常用指令
+
+#### rosnode
+
+rosnode 是用于获取节点信息的命令
+
+```
+rosnode ping    测试到节点的连接状态
+rosnode list    列出活动节点
+rosnode info    打印节点信息
+rosnode machine    列出指定设备上节点
+rosnode kill    杀死某个节点
+rosnode cleanup    清除不可连接的节点
+Copy
+```
+
+- rosnode ping
+
+  测试到节点的连接状态
+
+- rosnode list
+
+  列出活动节点
+
+- rosnode info
+
+  打印节点信息
+
+- rosnode machine
+
+  列出指定设备上的节点
+
+- rosnode kill
+
+  杀死某个节点
+
+- rosnode cleanup
+
+  清除无用节点，启动乌龟节点，然后 ctrl + c 关闭，该节点并没被彻底清除，可以使用 cleanup 清除节点
+
+#### rostopic
+
+**rostopic**包含rostopic命令行工具，用于显示有关ROS 主题的调试信息，包括发布者，订阅者，发布频率和ROS消息。它还包含一个实验性Python库，用于动态获取有关主题的信息并与之交互。
+
+```
+rostopic bw     显示主题使用的带宽
+rostopic delay  显示带有 header 的主题延迟
+rostopic echo   打印消息到屏幕
+rostopic find   根据类型查找主题
+rostopic hz     显示主题的发布频率
+rostopic info   显示主题相关信息
+rostopic list   显示所有活动状态下的主题
+rostopic pub    将数据发布到主题
+rostopic type   打印主题类型
+Copy
+```
+
+- **rostopic list**(-v)
+
+  直接调用即可，控制台将打印当前运行状态下的主题名称
+
+  rostopic list -v : 获取话题详情(比如列出：发布者和订阅者个数...)
+
+- **rostopic pub**
+
+  可以直接调用命令向订阅者发布消息
+
+  为roboware 自动生成的 发布/订阅 模型案例中的 订阅者 发布一条字符串
+
+  ```
+  rostopic pub /主题名称 消息类型 消息内容
+  rostopic pub /chatter std_msgs gagaxixi
+  Copy
+  ```
+
+  为 小乌龟案例的 订阅者 发布一条运动信息
+
+  ```
+  rostopic pub /turtle1/cmd_vel geometry_msgs/Twist
+   "linear:
+    x: 1.0
+    y: 0.0
+    z: 0.0
+  angular:
+    x: 0.0
+    y: 0.0
+    z: 2.0"
+  //只发布一次运动信息
+  
+  rostopic pub -r 10 /turtle1/cmd_vel geometry_msgs/Twist
+   "linear:
+    x: 1.0
+    y: 0.0
+    z: 0.0
+  angular:
+    x: 0.0
+    y: 0.0
+    z: 2.0"
+  // 以 10HZ 的频率循环发送运动信息
+  Copy
+  ```
+
+- **rostpic echo**
+
+  获取指定话题当前发布的消息
+
+- **rostopic info**
+
+  获取当前话题的小关信息
+
+  消息类型
+
+  发布者信息
+
+  订阅者信息
+
+- **rostopic type**
+
+  列出话题的消息类型
+
+- **rostopic find 消息类型**
+
+  根据消息类型查找话题
+
+- **rostopic delay**
+
+  列出消息头信息
+
+- **rostopic hz**
+
+  列出消息发布频率
+
+- **rostopic bw**
+
+  列出消息发布带宽
+
+#### rosmsg
+
+rosmsg是用于显示有关 ROS消息类型的 信息的命令行工具。
+
+**rosmsg 演示**
+
+```
+rosmsg show    显示消息描述
+rosmsg info    显示消息信息
+rosmsg list    列出所有消息
+rosmsg md5    显示 md5 加密后的消息
+rosmsg package    显示某个功能包下的所有消息
+rosmsg packages    列出包含消息的功能包
+Copy
+```
+
+- rosmsg list
+
+  会列出当前 ROS 中的所有 msg
+
+- rosmsg packages
+
+  列出包含消息的所有包
+
+- rosmsg package
+
+  列出某个包下的所有msg
+
+  ```
+  //rosmsg package 包名 
+  rosmsg package turtlesim
+  Copy
+  ```
+
+- rosmsg show
+
+  显示消息描述
+
+  ```
+  //rosmsg show 消息名称
+  rosmsg show turtlesim/Pose
+  结果:
+  float32 x
+  float32 y
+  float32 theta
+  float32 linear_velocity
+  float32 angular_velocity
+  Copy
+  ```
+
+- rosmsg info
+
+  作用与 rosmsg show 一样
+
+- rosmsg md5 (资料:[http://wiki.ros.org/ROS/Technical%20Overview#Message_serialization_and_msg_MD5_sums](http://wiki.ros.org/ROS/Technical Overview#Message_serialization_and_msg_MD5_sums))
+
+  一种校验算法，保证数据传输的一致性
+
+#### rosservice
+
+rosservice包含用于列出和查询ROS[Services](http://wiki.ros.org/Services)的rosservice命令行工具。
+
+调用部分服务时，如果对相关工作空间没有配置 path，需要进入工作空间调用 source ./devel/setup.bash
+
+```
+rosservice args 打印服务参数
+rosservice call    使用提供的参数调用服务
+rosservice find    按照服务类型查找服务
+rosservice info    打印有关服务的信息
+rosservice list    列出所有活动的服务
+rosservice type    打印服务类型
+rosservice uri    打印服务的 ROSRPC uri
+Copy
+```
+
+- rosservice list
+
+  列出所有活动的 service
+
+  ```
+  ~ rosservice list
+  /clear
+  /kill
+  /listener/get_loggers
+  /listener/set_logger_level
+  /reset
+  /rosout/get_loggers
+  /rosout/set_logger_level
+  /rostopic_4985_1578723066421/get_loggers
+  /rostopic_4985_1578723066421/set_logger_level
+  /rostopic_5582_1578724343069/get_loggers
+  /rostopic_5582_1578724343069/set_logger_level
+  /spawn
+  /turtle1/set_pen
+  /turtle1/teleport_absolute
+  /turtle1/teleport_relative
+  /turtlesim/get_loggers
+  /turtlesim/set_logger_level
+  Copy
+  ```
+
+- rosservice args
+
+  打印服务参数
+
+  ```
+  rosservice args /spawn
+  x y theta name
+  Copy
+  ```
+
+- rosservice call
+
+  调用服务
+
+  为小乌龟的案例生成一只新的乌龟
+
+  ```
+  rosservice call /spawn "x: 1.0
+  y: 2.0
+  theta: 0.0
+  name: 'xxx'"
+  name: "xxx"
+  
+  //生成一只叫 xxx 的乌龟
+  Copy
+  ```
+
+- rosservice find
+
+  根据消息类型获取话题
+
+- rosservice info
+
+  获取服务话题详情
+
+- rosservice type
+
+  获取消息类型
+
+- rosservice uri
+
+  获取服务器 uri
+
+#### rossrv
+
+rossrv是用于显示有关ROS服务类型的信息的命令行工具，与 rosmsg 使用语法高度雷同。
+
+```
+rossrv show    显示服务消息详情
+rossrv info    显示服务消息相关信息
+rossrv list    列出所有服务信息
+rossrv md5    显示 md5 加密后的服务消息
+rossrv package    显示某个包下所有服务消息
+rossrv packages    显示包含服务消息的所有包
+Copy
+```
+
+- rossrv list
+
+  会列出当前 ROS 中的所有 srv 消息
+
+- rossrv packages
+
+  列出包含服务消息的所有包
+
+- rossrv package
+
+  列出某个包下的所有msg
+
+  ```
+  //rossrv package 包名 
+  rossrv package turtlesim
+  Copy
+  ```
+
+- rossrv show
+
+  显示消息描述
+
+  ```
+  //rossrv show 消息名称
+  rossrv show turtlesim/Spawn
+  结果:
+  float32 x
+  float32 y
+  float32 theta
+  string name
+  ---
+  string name
+  Copy
+  ```
+
+- rossrv info
+
+  作用与 rossrv show 一致
+
+- rossrv md5
+
+  对 service 数据使用 md5 校验(加密)
+
+#### rosparam
+
+rosparam包含rosparam命令行工具，用于使用YAML编码文件在参数服务器上获取和设置ROS参数。
+
+```
+rosparam set    设置参数
+rosparam get    获取参数
+rosparam load    从外部文件加载参数
+rosparam dump    将参数写出到外部文件
+rosparam delete    删除参数
+rosparam list    列出所有参数
+Copy
+```
+
+- rosparam list
+
+  列出所有参数
+
+  ```
+  rosparam list
+  
+  //默认结果
+  /rosdistro
+  /roslaunch/uris/host_helloros_virtual_machine__42911
+  /rosversion
+  /run_id
+  Copy
+  ```
+
+- rosparam set
+
+  设置参数
+
+  ```
+  rosparam set name huluwa
+  
+  //再次调用 rosparam list 结果
+  /name
+  /rosdistro
+  /roslaunch/uris/host_helloros_virtual_machine__42911
+  /rosversion
+  /run_id
+  Copy
+  ```
+
+- rosparam get
+
+  获取参数
+
+  ```
+  rosparam get name
+  
+  //结果
+  huluwa
+  Copy
+  ```
+
+- rosparam delete
+
+  删除参数
+
+  ```
+  rosparam delete name
+  
+  //结果
+  //去除了name
+  Copy
+  ```
+
+- rosparam load(先准备 yaml 文件)
+
+  从外部文件加载参数
+
+  ```
+  rosparam load xxx.yaml
+  Copy
+  ```
+
+- rosparam dump
+
+  将参数写出到外部文件
+
+  ```
+  rosparam dump yyy.yaml
+  ```
+
+### 实操01_话题发布
+
+**需求描述:**编码实现乌龟运动控制，让小乌龟做圆周运动。
+
+**结果演示:**
+
+![img](http://www.autolabor.com.cn/book/ROSTutorials/assets/01_%E6%A1%88%E4%BE%8B01_%E4%B9%8C%E9%BE%9F%E7%94%BB%E5%9C%86.gif)
+
+**实现分析:**
+
+1. 乌龟运动控制实现，关键节点有两个，一个是乌龟运动显示节点 turtlesim_node，另一个是控制节点，二者是订阅发布模式实现通信的，乌龟运动显示节点直接调用即可，运动控制节点之前是使用的 turtle_teleop_key通过键盘 控制，现在需要自定义控制节点。
+2. 控制节点自实现时，首先需要了解控制节点与显示节点通信使用的话题与消息，可以使用ros命令结合计算图来获取。
+3. 了解了话题与消息之后，通过 C++ 或 Python 编写运动控制节点，通过指定的话题，按照一定的逻辑发布消息即可。
+
+**实现流程:**
+
+1. 通过计算图结合ros命令获取话题与消息信息。
+2. 编码实现运动控制节点。
+3. 启动 roscore、turtlesim_node 以及自定义的控制节点，查看运行结果。
+
+#### 1.话题与消息获取
+
+**准备:** 先启动键盘控制乌龟运动案例。
+
+##### 1.1话题获取
+
+**获取话题:**/turtle1/cmd_vel
+
+通过计算图查看话题，启动计算图:
+
+```
+rqt_graph
+Copy
+```
+
+或者通过 rostopic 列出话题:
+
+```
+rostopic list
+Copy
+```
+
+##### 1.2消息获取
+
+**获取消息类型:**geometry_msgs/Twist
+
+```
+rostopic type /turtle1/cmd_vel
+Copy
+```
+
+**获取消息格式:**
+
+```
+rosmsg info geometry_msgs/Twist
+Copy
+```
+
+**响应结果:**
+
+```
+geometry_msgs/Vector3 linear
+  float64 x
+  float64 y
+  float64 z
+geometry_msgs/Vector3 angular
+  float64 x
+  float64 y
+  float64 z
+Copy
+```
+
+linear(线速度) 下的xyz分别对应在x、y和z方向上的速度(单位是 m/s)；
+
+angular(角速度)下的xyz分别对应x轴上的翻滚、y轴上俯仰和z轴上偏航的速度(单位是rad/s)。
+
+> 详情请查看补充资料。
+
+#### 2.实现发布节点
+
+创建功能包需要依赖的功能包: roscpp rospy std_msgs geometry_msgs
+
+**实现方案A:** C++
+
+```cpp
+/*
+    编写 ROS 节点，控制小乌龟画圆
+
+    准备工作:
+        1.获取topic(已知: /turtle1/cmd_vel)
+        2.获取消息类型(已知: geometry_msgs/Twist)
+        3.运行前，注意先启动 turtlesim_node 节点
+
+    实现流程:
+        1.包含头文件
+        2.初始化 ROS 节点
+        3.创建发布者对象
+        4.循环发布运动控制消息
+*/
+
+#include "ros/ros.h"
+#include "geometry_msgs/Twist.h"
+
+int main(int argc, char *argv[])
+{
+    setlocale(LC_ALL,"");
+    // 2.初始化 ROS 节点
+    ros::init(argc,argv,"control");
+    ros::NodeHandle nh;
+    // 3.创建发布者对象
+    ros::Publisher pub = nh.advertise<geometry_msgs::Twist>("/turtle1/cmd_vel",1000);
+    // 4.循环发布运动控制消息
+    //4-1.组织消息
+    geometry_msgs::Twist msg;
+    msg.linear.x = 1.0;
+    msg.linear.y = 0.0;
+    msg.linear.z = 0.0;
+
+    msg.angular.x = 0.0;
+    msg.angular.y = 0.0;
+    msg.angular.z = 2.0;
+
+    //4-2.设置发送频率
+    ros::Rate r(10);
+    //4-3.循环发送
+    while (ros::ok())
+    {
+        pub.publish(msg);
+
+        ros::spinOnce();
+    }
+
+
+    return 0;
+}
+Copy
+```
+
+配置文件此处略
+
+**实现方案B:** Python
+
+```py
+#! /usr/bin/env python
+"""
+    编写 ROS 节点，控制小乌龟画圆
+
+    准备工作:
+        1.获取topic(已知: /turtle1/cmd_vel)
+        2.获取消息类型(已知: geometry_msgs/Twist)
+        3.运行前，注意先启动 turtlesim_node 节点
+
+    实现流程:
+        1.导包
+        2.初始化 ROS 节点
+        3.创建发布者对象
+        4.循环发布运动控制消息
+
+"""
+
+import rospy
+from geometry_msgs.msg import Twist
+
+if __name__ == "__main__":
+    # 2.初始化 ROS 节点
+    rospy.init_node("control_circle_p")
+    # 3.创建发布者对象
+    pub = rospy.Publisher("/turtle1/cmd_vel",Twist,queue_size=1000)
+    # 4.循环发布运动控制消息
+    rate = rospy.Rate(10)
+    msg = Twist()
+    msg.linear.x = 1.0
+    msg.linear.y = 0.0
+    msg.linear.z = 0.0
+    msg.angular.x = 0.0
+    msg.angular.y = 0.0
+    msg.angular.z = 0.5
+
+    while not rospy.is_shutdown():
+        pub.publish(msg)
+        rate.sleep()
+Copy
+```
+
+权限设置以及配置文件此处略
+
+#### 3.运行
+
+首先，启动 roscore；
+
+然后启动乌龟显示节点；
+
+最后执行运动控制节点；
+
+最终执行结果与演示结果类似。
+
+------
+
+**补充资料1:**
+
+**弧度:** 单位弧度定义为圆弧长度等于半径时的圆心角。
+
+![img](http://www.autolabor.com.cn/book/ROSTutorials/assets/%E5%BC%A7%E5%BA%A6.png)
+
+**补充资料2:**偏航、翻滚与俯仰
+
+坐标系图解:
+
+![img](http://www.autolabor.com.cn/book/ROSTutorials/assets/%E6%AC%A7%E6%8B%89%E8%A7%921.png)
+
+偏航:
+
+![img](http://www.autolabor.com.cn/book/ROSTutorials/assets/%E6%AC%A7%E6%8B%89%E8%A7%922.gif)
+
+俯仰:
+
+![img](http://www.autolabor.com.cn/book/ROSTutorials/assets/%E6%AC%A7%E6%8B%89%E8%A7%923.gif)
+
+翻滚:
+
+![img](http://www.autolabor.com.cn/book/ROSTutorials/assets/%E6%AC%A7%E6%8B%89%E8%A7%924.gif)
+
+### 实操02_话题订阅
+
+**需求描述:** 已知turtlesim中的乌龟显示节点，会发布当前乌龟的位姿(窗体中乌龟的坐标以及朝向)，要求控制乌龟运动，并时时打印当前乌龟的位姿。
+
+**结果演示:**
+
+![img](http://www.autolabor.com.cn/book/ROSTutorials/assets/%E6%A1%88%E4%BE%8B02_%E4%B9%8C%E9%BE%9F%E4%BD%8D%E5%A7%BF.gif)
+
+**实现分析:**
+
+1. 首先，需要启动乌龟显示以及运动控制节点并控制乌龟运动。
+2. 要通过ROS命令，来获取乌龟位姿发布的话题以及消息。
+3. 编写订阅节点，订阅并打印乌龟的位姿。
+
+**实现流程:**
+
+1. 通过ros命令获取话题与消息信息。
+2. 编码实现位姿获取节点。
+3. 启动 roscore、turtlesim_node 、控制节点以及位姿订阅节点，控制乌龟运动并输出乌龟的位姿。
+
+#### 1.话题与消息获取
+
+**获取话题:**/turtle1/pose
+
+```
+rostopic list
+Copy
+```
+
+**获取消息类型:**turtlesim/Pose
+
+```
+rostopic type  /turtle1/pose
+Copy
+```
+
+**获取消息格式:**
+
+```
+rosmsg info turtlesim/Pose
+Copy
+```
+
+**响应结果:**
+
+```
+float32 x
+float32 y
+float32 theta
+float32 linear_velocity
+float32 angular_velocity
+Copy
+```
+
+#### 2.实现订阅节点
+
+创建功能包需要依赖的功能包: roscpp rospy std_msgs turtlesim
+
+**实现方案A:** C++
+
+```cpp
+/*  
+    订阅小乌龟的位姿: 时时获取小乌龟在窗体中的坐标并打印
+    准备工作:
+        1.获取话题名称 /turtle1/pose
+        2.获取消息类型 turtlesim/Pose
+        3.运行前启动 turtlesim_node 与 turtle_teleop_key 节点
+
+    实现流程:
+        1.包含头文件
+        2.初始化 ROS 节点
+        3.创建 ROS 句柄
+        4.创建订阅者对象
+        5.回调函数处理订阅的数据
+        6.spin
+*/
+
+#include "ros/ros.h"
+#include "turtlesim/Pose.h"
+
+void doPose(const turtlesim::Pose::ConstPtr& p){
+    ROS_INFO("乌龟位姿信息:x=%.2f,y=%.2f,theta=%.2f,lv=%.2f,av=%.2f",
+        p->x,p->y,p->theta,p->linear_velocity,p->angular_velocity
+    );
+}
+
+int main(int argc, char *argv[])
+{
+    setlocale(LC_ALL,"");
+    // 2.初始化 ROS 节点
+    ros::init(argc,argv,"sub_pose");
+    // 3.创建 ROS 句柄
+    ros::NodeHandle nh;
+    // 4.创建订阅者对象
+    ros::Subscriber sub = nh.subscribe<turtlesim::Pose>("/turtle1/pose",1000,doPose);
+    // 5.回调函数处理订阅的数据
+    // 6.spin
+    ros::spin();
+    return 0;
+}
+Copy
+```
+
+配置文件此处略
+
+**实现方案B:** Python
+
+```py
+#! /usr/bin/env python
+"""
+    订阅小乌龟的位姿: 时时获取小乌龟在窗体中的坐标并打印
+    准备工作:
+        1.获取话题名称 /turtle1/pose
+        2.获取消息类型 turtlesim/Pose
+        3.运行前启动 turtlesim_node 与 turtle_teleop_key 节点
+
+    实现流程:
+        1.导包
+        2.初始化 ROS 节点
+        3.创建订阅者对象
+        4.回调函数处理订阅的数据
+        5.spin
+
+"""
+
+import rospy
+from turtlesim.msg import Pose
+
+def doPose(data):
+    rospy.loginfo("乌龟坐标:x=%.2f, y=%.2f,theta=%.2f",data.x,data.y,data.theta)
+
+if __name__ == "__main__":
+
+    # 2.初始化 ROS 节点
+    rospy.init_node("sub_pose_p")
+
+    # 3.创建订阅者对象
+    sub = rospy.Subscriber("/turtle1/pose",Pose,doPose,queue_size=1000)
+    #     4.回调函数处理订阅的数据
+    #     5.spin
+    rospy.spin()
+Copy
+```
+
+权限设置以及配置文件此处略
+
+#### 3.运行
+
+首先，启动 roscore；
+
+然后启动乌龟显示节点，执行运动控制节点；
+
+最后启动乌龟位姿订阅节点；
+
+最终执行结果与演示结果类似。
+
+### 实操03_服务调用
+
+**需求描述:**编码实现向 turtlesim 发送请求，在乌龟显示节点的窗体指定位置生成一乌龟，这是一个服务请求操作。
+
+**结果演示:**
+
+![img](http://www.autolabor.com.cn/book/ROSTutorials/assets/02_%E6%A1%88%E4%BE%8B2_%E7%94%9F%E6%88%90%E5%B0%8F%E4%B9%8C%E9%BE%9F.PNG)
+
+**实现分析:**
+
+1. 首先，需要启动乌龟显示节点。
+2. 要通过ROS命令，来获取乌龟生成服务的服务名称以及服务消息类型。
+3. 编写服务请求节点，生成新的乌龟。
+
+**实现流程:**
+
+1. 通过ros命令获取服务与服务消息信息。
+2. 编码实现服务请求节点。
+3. 启动 roscore、turtlesim_node 、乌龟生成节点，生成新的乌龟。
+
+#### 1.服务名称与服务消息获取
+
+**获取话题:**/spawn
+
+```
+rosservice list
+Copy
+```
+
+**获取消息类型:**turtlesim/Spawn
+
+```
+rosservice type /spawn
+Copy
+```
+
+**获取消息格式:**
+
+```
+rossrv info turtlesim/Spawn
+Copy
+```
+
+**响应结果:**
+
+```
+float32 x
+float32 y
+float32 theta
+string name
+---
+string name
+Copy
+```
+
+##### 
+
+#### 2.服务客户端实现
+
+创建功能包需要依赖的功能包: roscpp rospy std_msgs turtlesim
+
+**实现方案A:**C++
+
+```cpp
+/*
+    生成一只小乌龟
+    准备工作:
+        1.服务话题 /spawn
+        2.服务消息类型 turtlesim/Spawn
+        3.运行前先启动 turtlesim_node 节点
+
+    实现流程:
+        1.包含头文件
+          需要包含 turtlesim 包下资源，注意在 package.xml 配置
+        2.初始化 ros 节点
+        3.创建 ros 句柄
+        4.创建 service 客户端
+        5.等待服务启动
+        6.发送请求
+        7.处理响应
+
+*/
+
+#include "ros/ros.h"
+#include "turtlesim/Spawn.h"
+
+int main(int argc, char *argv[])
+{
+    setlocale(LC_ALL,"");
+    // 2.初始化 ros 节点
+    ros::init(argc,argv,"set_turtle");
+    // 3.创建 ros 句柄
+    ros::NodeHandle nh;
+    // 4.创建 service 客户端
+    ros::ServiceClient client = nh.serviceClient<turtlesim::Spawn>("/spawn");
+    // 5.等待服务启动
+    // client.waitForExistence();
+    ros::service::waitForService("/spawn");
+    // 6.发送请求
+    turtlesim::Spawn spawn;
+    spawn.request.x = 1.0;
+    spawn.request.y = 1.0;
+    spawn.request.theta = 1.57;
+    spawn.request.name = "my_turtle";
+    bool flag = client.call(spawn);
+    // 7.处理响应结果
+    if (flag)
+    {
+        ROS_INFO("新的乌龟生成,名字:%s",spawn.response.name.c_str());
+    } else {
+        ROS_INFO("乌龟生成失败！！！");
+    }
+
+
+    return 0;
+}
+Copy
+```
+
+配置文件此处略
+
+**实现方案B:**Python
+
+```py
+#! /usr/bin/env python
+"""
+    生成一只小乌龟
+    准备工作:
+        1.服务话题 /spawn
+        2.服务消息类型 turtlesim/Spawn
+        3.运行前先启动 turtlesim_node 节点
+
+    实现流程:
+        1.导包
+          需要包含 turtlesim 包下资源，注意在 package.xml 配置
+        2.初始化 ros 节点
+        3.创建 service 客户端
+        4.等待服务启动
+        5.发送请求
+        6.处理响应
+
+"""
+
+import rospy
+from turtlesim.srv import Spawn,SpawnRequest,SpawnResponse
+
+if __name__ == "__main__":
+    # 2.初始化 ros 节点
+    rospy.init_node("set_turtle_p")
+    # 3.创建 service 客户端
+    client = rospy.ServiceProxy("/spawn",Spawn)
+    # 4.等待服务启动
+    client.wait_for_service()
+    # 5.发送请求
+    req = SpawnRequest()
+    req.x = 2.0
+    req.y = 2.0
+    req.theta = -1.57
+    req.name = "my_turtle_p"
+    try:
+        response = client.call(req)
+        # 6.处理响应
+        rospy.loginfo("乌龟创建成功!，叫:%s",response.name)
+    except expression as identifier:
+        rospy.loginfo("服务调用失败")
+Copy
+```
+
+权限设置以及配置文件此处略
+
+#### 3.运行
+
+首先，启动 roscore；
+
+然后启动乌龟显示节点；
+
+最后启动乌龟生成请求节点；
+
+最终执行结果与演示结果类似。
+
+### 实操04_参数设置
+
+**需求描述:** 修改turtlesim乌龟显示节点窗体的背景色，已知背景色是通过参数服务器的方式以 rgb 方式设置的。
+
+**结果演示:**
+
+![img](http://www.autolabor.com.cn/book/ROSTutorials/assets/03_%E6%A1%88%E4%BE%8B3_%E6%94%B9%E5%8F%98%E8%83%8C%E6%99%AF%E8%89%B2.PNG)
+
+**实现分析:**
+
+1. 首先，需要启动乌龟显示节点。
+2. 要通过ROS命令，来获取参数服务器中设置背景色的参数。
+3. 编写参数设置节点，修改参数服务器中的参数值。
+
+**实现流程:**
+
+1. 通过ros命令获取参数。
+2. 编码实现服参数设置节点。
+3. 启动 roscore、turtlesim_node 与参数设置节点，查看运行结果。
+
+#### 1.参数名获取
+
+**获取参数列表:**
+
+```
+rosparam list
+Copy
+```
+
+**响应结果:**
+
+```
+/turtlesim/background_b
+/turtlesim/background_g
+/turtlesim/background_r
+Copy
+```
+
+#### 2.参数修改
+
+**实现方案A:**C++
+
+```cpp
+/*
+    注意命名空间的使用。
+
+*/
+#include "ros/ros.h"
+
+
+int main(int argc, char *argv[])
+{
+    ros::init(argc,argv,"haha");
+
+    ros::NodeHandle nh("turtlesim");
+    //ros::NodeHandle nh;
+
+    // ros::param::set("/turtlesim/background_r",0);
+    // ros::param::set("/turtlesim/background_g",0);
+    // ros::param::set("/turtlesim/background_b",0);
+
+    nh.setParam("background_r",0);
+    nh.setParam("background_g",0);
+    nh.setParam("background_b",0);
+
+
+    return 0;
+}
+Copy
+```
+
+配置文件此处略
+
+**实现方案B:**Python
+
+```py
+#! /usr/bin/env python
+
+import rospy
+
+if __name__ == "__main__":
+    rospy.init_node("hehe")
+    # rospy.set_param("/turtlesim/background_r",255)
+    # rospy.set_param("/turtlesim/background_g",255)
+    # rospy.set_param("/turtlesim/background_b",255)
+    rospy.set_param("background_r",255)
+    rospy.set_param("background_g",255)
+    rospy.set_param("background_b",255)  # 调用时，需要传入 __ns:=xxx
+Copy
+```
+
+权限设置以及配置文件此处略
+
+#### 3.运行
+
+首先，启动 roscore；
+
+然后启动背景色设置节点；
+
+最后启动乌龟显示节点；
+
+最终执行结果与演示结果类似。
+
+PS: 注意节点启动顺序，如果先启动乌龟显示节点，后启动背景色设置节点，那么颜色设置不会生效。
+
+#### 4.其他设置方式
+
+**方式1:修改小乌龟节点的背景色(命令行实现)**
+
+```
+rosparam set /turtlesim/background_b 自定义数值
+Copy
+rosparam set /turtlesim/background_g 自定义数值
+Copy
+rosparam set /turtlesim/background_r 自定义数值
+Copy
+```
+
+修改相关参数后，重启 turtlesim_node 节点，背景色就会发生改变了
+
+**方式2:启动节点时，直接设置参数**
+
+```
+rosrun turtlesim turtlesim_node _background_r:=100 _background_g=0 _background_b=0
+Copy
+```
+
+**方式3:通过launch文件传参**
+
+```xml
+<launch>
+    <node pkg="turtlesim" type="turtlesim_node" name="set_bg" output="screen">
+        <!-- launch 传参策略1 -->
+        <!-- <param name="background_b" value="0" type="int" />
+        <param name="background_g" value="0" type="int" />
+        <param name="background_r" value="0" type="int" /> -->
+
+        <!-- launch 传参策略2 -->
+        <rosparam command="load" file="$(find demo03_test_parameter)/cfg/color.yaml" />
+    </node>
+
+</
+```
+
+## 通信机制比较
+
+三种通信机制中，参数服务器是一种数据共享机制，可以在不同的节点之间共享数据，话题通信与服务通信是在不同的节点之间传递数据的，三者是ROS中最基础也是应用最为广泛的通信机制。
+
+这其中，话题通信和服务通信有一定的相似性也有本质上的差异，在此将二者做一下简单比较:
+
+二者的实现流程是比较相似的，都是涉及到四个要素:
+
+- 要素1: 消息的发布方/客户端(Publisher/Client)
+- 要素2: 消息的订阅方/服务端(Subscriber/Server)
+- 要素3: 话题名称(Topic/Service)
+- 要素4: 数据载体(msg/srv)
+
+可以概括为: 两个节点通过话题关联到一起，并使用某种类型的数据载体实现数据传输。
+
+二者的实现也是有本质差异的，具体比较如下:
+
+|          | Topic(话题)                           | Service(服务)                                |
+| :------- | :------------------------------------ | :------------------------------------------- |
+| 通信模式 | 发布/订阅                             | 请求/响应                                    |
+| 同步性   | 异步                                  | 同步                                         |
+| 底层协议 | ROSTCP/ROSUDP                         | ROSTCP/ROSUDP                                |
+| 缓冲区   | 有                                    | 无                                           |
+| 时时性   | 弱                                    | 强                                           |
+| 节点关系 | 多对多                                | 一对多(一个 Server)                          |
+| 通信数据 | msg                                   | srv                                          |
+| 使用场景 | 连续高频的数据发布与接收:雷达、里程计 | 偶尔调用或执行某一项特定功能：拍照、语音识别 |
+
+不同通信机制有一定的互补性，都有各自适应的应用场景。尤其是话题与服务通信，需要结合具体的应用场景与二者的差异，选择合适的通信机制。
