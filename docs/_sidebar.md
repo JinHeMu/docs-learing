@@ -6,10 +6,5 @@
 
 - [Markdown](teach/markdown/markdown教学.md)
 - [C++](teach/C++/C++.md)
-<<<<<<< Updated upstream
 - [ROS](teach/ROS/ROS学习.md)
-
-=======
-- [ROS1](teach/ROS/ROS学习.md)
 - [智能视觉](teach/smartcar/smartcar)
->>>>>>> Stashed changes
