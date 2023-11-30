@@ -3,8 +3,10 @@
   - [大纲(第一次培训)](teach/Chapter1/电子学社培训.md)
   - [硬件(第二次培训)](teach/Chapter2/电子学社培训.md)
   - [单片机(第三次培训)](teach/Chapter3/51单片机培训.md)
-
-- [Markdown](teach/markdown/markdown教学.md)
-- [C++](teach/C++/C++.md)
-- [ROS](teach/ROS/ROS学习.md)
-- [智能视觉](teach/smartcar/smartcar)
+  - 51定时器和中断
+  
+- [Markdown](note/markdown/markdown教学.md)
+- [C++](note/c++/C++.md)
+- [ROS1](note/ros1/ROS学习.md)
+- [智能车智能视觉](note/smartcar/smartcar)
+- [STM32CubeMX + RT-Thread](note/stm32/ROS小车STM32控制部分.md)
