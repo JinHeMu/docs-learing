@@ -12,3 +12,4 @@
 - [ROS1](note/ros1/ROS学习.md)
 - [智能车智能视觉](note/smartcar/smartcar)
 - [STM32CubeMX + RT-Thread](note/stm32/ROS小车STM32控制部分.md)
+- [OpenCV(C++)](note/opencv/opencv.md)
