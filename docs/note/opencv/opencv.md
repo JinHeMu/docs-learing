@@ -312,7 +312,7 @@ createTrackbar("Hue min", "Trackbars", &hmin, 179);
 
 其中高斯模糊用来减小噪声,膨胀可以用来加大边缘检测效果
 
-```c++
+```cpp
 cvtColor(img, imgGray, COLOR_BGR2GRAY);
 GaussianBlur(imgGray, imgBlur, Size(3, 3), 3, 0);
 Canny(imgBlur, imgCanny, 25, 75);
@@ -334,13 +334,12 @@ drawContours(img, contours, -1, Scalar(255, 0, 255), 2);
 这段代码使用了OpenCV库进行轮廓检测和绘制操作。让我们逐行解释：
 
 1. `findContours` 函数用于在二值化图像 `imgDil` 上查找轮廓，并将结果存储在 `contours` 中，层次结构信息存储在 `hierarchy` 中。具体的参数含义如下：
-
    - `imgDil`: 输入的二值化图像。
    - `contours`: 用于存储检测到的轮廓的向量。
    - `hierarchy`: 用于存储轮廓层次结构信息的向量。
    - `RETR_EXTERNAL`: 轮廓检索模式，表示仅检测外部轮廓。
    - `CHAIN_APPROX_SIMPLE`: 轮廓近似方法，表示使用简化的近似方法。
-
+   
 2. `drawContours` 函数用于在图像 `img` 上绘制检测到的轮廓。具体的参数含义如下：
 
    - `img`: 输出的图像，轮廓将在这个图像上被绘制。
@@ -350,3 +349,107 @@ drawContours(img, contours, -1, Scalar(255, 0, 255), 2);
    - `2`: 绘制轮廓的线宽度。
 
 这两行代码一起完成了轮廓检测和绘制的操作。检测到的轮廓存储在 `contours` 中，可以在后续的代码中使用这些轮廓进行进一步的图像处理或分析。而绘制的结果则存储在 `img` 中，你可以根据需要保存或显示这个图像。
+
+```cpp
+void getContours(const Mat& imgDil_V, const Mat& img)
+{
+    vector<vector<Point>> contours;
+    vector<Vec4i> hierarchy;
+    findContours(imgDil_V, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
+    string objectType;
+
+    for (int i = 0; i < contours.size(); i++) {
+        double area = contourArea(contours[i]);
+        cout << area << endl;
+
+        vector<vector<Point>> conPoly(contours.size());
+        vector<Rect> boundRect(contours.size());
+
+        if (area > 1000 )
+        {
+            double peri = arcLength(contours[i], true);
+            approxPolyDP(contours[i], conPoly[i], 0.02 * peri, true);
+            drawContours(img, conPoly, i, Scalar(255, 0, 255), 2);
+            cout << conPoly[i].size() << endl;
+            boundRect[i] = boundingRect(conPoly[i]);
+            rectangle(img, boundRect[i].tl(), boundRect[i].br(), Scalar(0, 255, 0), 5);
+
+            int objCor = (int)conPoly[i].size();
+
+            if(objCor == 3){ objectType = "Tri"; }
+            if(objCor == 4)
+            {
+                float aspRatio = (float)boundRect[i].width / (float)boundRect[i].height;
+                if(aspRatio > 0.95 && aspRatio < 1.05)
+                {
+                    objectType = "Square";
+                }
+                else
+                {
+                    objectType = "Rect";
+                }
+
+            }
+            if(objCor > 4){ objectType = "Circle"; }
+
+            putText(img, objectType, {boundRect[i].x, boundRect[i].y - 5}, FONT_HERSHEY_DUPLEX, 0.5, Scalar(0, 69, 255));
+        }
+    }
+}
+```
+
+## 面部检测
+
+```cpp
+int main()
+{
+//    string path = "Resources/test.png";
+//    Mat img = imread(path);
+
+
+    VideoCapture cap(0);
+    Mat img;
+    
+    while(true)
+    {
+        cap.read(img);
+        imshow("image", img);
+
+        CascadeClassifier faceCascade;
+        faceCascade.load("Resources/haarcascade_frontalface_default.xml");
+
+        if(faceCascade.empty()){ cout << "XML file not loaded" << endl; }
+
+        vector<Rect> faces;
+        faceCascade.detectMultiScale(img, faces, 1.1, 10);
+
+        for (int i = 0; i < faces.size(); i++) {
+            Mat imgCrop = img(faces[i]);
+            imshow(to_string(i), imgCrop);
+            rectangle(img, faces[i].tl(), faces[i].br(), Scalar(255, 0 ,255), 3);
+        }
+        imshow("img", img);
+        waitKey(1);
+    }
+    return 0;
+}
+```
+
+`CascadeClassifier` 是 OpenCV 库中用于对象检测的一个类。它主要用于实现基于 Haar 特征的级联分类器（Cascade Classifier）的目标检测方法。
+
+Haar 特征是一种基于图像局部特征的检测方法，通过使用弱分类器组成的级联结构来实现高效的对象检测。Cascade Classifier 通过级联的方式，在不同阶段进行粗糙的筛选，将可能包含对象的区域传递给下一级，最终得到一个相对准确的检测结果。
+
+在 OpenCV 中，`CascadeClassifier` 可以用于加载已经训练好的 Haar 特征分类器模型，并用于检测图像中是否包含特定类型的对象，比如人脸、眼睛等。
+
+
+在OpenCV中，`detectMultiScale` 函数是用于在图像中检测对象的方法。具体来说，它是基于级联分类器（通常是Haar级联）的目标检测方法。
+
+下面是你提供的 `detectMultiScale` 函数的参数解释：
+
+- `img`: 输入的图像。这是需要检测对象的源图像。
+- `faces`: 一个 `std::vector<cv::Rect>` 类型的变量，用于存储检测到的对象的矩形区域。在你的例子中，这是用于存储检测到的人脸矩形的容器。
+- `1.1`: 表示在图像中搜索对象时每次图像缩小的比例。这个值越大，检测速度越快，但可能会错过小目标。通常选择在1.01到1.3之间的值。
+- `10`: 表示目标的最小邻居数，用于确定目标区域。较大的值会去掉一些重叠较多的检测框，通常选择在3到30之间的值。
+
+这个函数会返回一个 `std::vector<cv::Rect>`，其中包含检测到的对象的矩形区域。在你的代码中，这个矩形区域表示检测到的人脸的位置。
+

@@ -6,9 +6,8 @@
   - 51定时器和中断
   - [定时器中断代码讲解和PWM电机控制](teach/Chapter5/第五次培训.md)
   - [循迹小车的制作](teach/Chapter6/最后一次培训.md)
-  
-- [Markdown](note/markdown/markdown教学.md)
 - [C++](note/c++/C++.md)
+- [Cmake](note/c++/Cmake.md)
 - [ROS1](note/ros1/ROS学习.md)
 - [智能车智能视觉](note/smartcar/smartcar)
 - [STM32CubeMX + RT-Thread](note/stm32/ROS小车STM32控制部分.md)
