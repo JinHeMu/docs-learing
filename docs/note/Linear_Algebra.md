@@ -6,23 +6,19 @@
 
 ## 1.方程组的几何解释
 
-
+例如:
 $$
-2x - y &= 0 \\
--x + 2y &= 3
+2x - y = 0 \\
+-x + 2y = 3\\
 $$
-
-
 $$
 \downarrow
 $$
-
 $$
 \begin{bmatrix}
   2 & -1  \\
   -1 & 2 \\
 \end{bmatrix}
-
 \begin{bmatrix}
   x \\
   y \\
@@ -33,6 +29,7 @@ $$
   3 \\
 \end{bmatrix}
 $$
+
 可以写为:
 $$
 A\vec{x} = \vec{b}
