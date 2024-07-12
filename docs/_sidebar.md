@@ -12,3 +12,4 @@
 - [智能车智能视觉](note/smartcar/smartcar)
 - [STM32CubeMX + RT-Thread](note/stm32/ROS小车STM32控制部分.md)
 - [OpenCV(C++)](note/opencv/opencv.md)
+- [线性代数](note/Linear_Algebra.md)
