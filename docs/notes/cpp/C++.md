@@ -220,6 +220,15 @@ public:
         b = 11;
     }
 }
+
+class Entity
+{
+public:
+    float a,b,c;
+    Entity() : a(11), b(12), c(10)
+    {
+    }
+};
 ```
 
 ## 析构函数
