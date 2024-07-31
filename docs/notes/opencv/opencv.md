@@ -2,15 +2,15 @@
 
 ## 读取图片和视频
 
-```c++
+```cpp
 	string path = "Resources/test.png";
 	Mat img = imread(path);
     imshow("Image", img);
     waitKey(0);
 ```
 
-```c++
-    string path = "Resources/test_video.mp4";
+```cpp
+	string path = "Resources/test_video.mp4";
     VideoCapture cap(path);
 //	VideoCapture cap(0);读取设备摄像头
     Mat img;

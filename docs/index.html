@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
@@ -8,68 +9,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
 </head>
+
 <body>
-  <nav>
-    <a href="https://github.com/JinHeMu">JinHeMu</a>
-  </nav>
   <div id="app"></div>
   <script>
     window.$docsify = {
       name: '',
-      repo: ''
+      repo: '',
     }
   </script>
-  <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-
-  <!-- index.html -->
-
-  <script>
-    window.$docsify = {
-      loadSidebar: true
-    }
-  </script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-
-  <!-- index.html -->
 
   <script>
     window.$docsify = {
       loadSidebar: true,
-      subMaxLevel: 1,
-      repo: 'https://github.com/JinHeMu/GitBook_Demo', // 右上角Github图标链接
-
+      subMaxLevel: 2,
     }
   </script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
 
 
-<script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <script>
+    window.$docsify = {
+      loadNavbar: true,
+        // load from nav.md
+      loadNavbar: 'nav.md'
+    }
+  </script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
 
-<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <!-- 公式 -->
+  <!-- CDN files for docsify-katex -->
+  <script src="./static/js/katex.min.js" ></script> 
+  <link rel="stylesheet" href="./static/css/katex/katex.min.css">
+  <script src="./static/js/marked@3.js" ></script>
+  <script src="./static/js/docsify-katex.js" ></script>
 
-<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+  <script src="./static/js/prism-cpp.min.js"></script>
 
-<!-- 公式 -->
-<!-- CDN files for docsify-katex -->
-<script src="./static/js/katex.min.js" ></script> 
-<link rel="stylesheet" href="./static/css/katex/katex.min.css">
-<script src="./static/js/marked@3.js" ></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script> -->
-<!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" /> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/marked@3"></script> -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
 
-<!-- CDN files for docsify-katex -->
-<script src="./static/js/docsify-katex.js" ></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-cpp.min.js"></script>
 
-
-
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
