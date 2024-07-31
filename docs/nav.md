@@ -9,7 +9,8 @@
 * 个人学习
     * [C++](notes/cpp/C++.md)
     * [Cmake](notes/cpp/Cmake.md)
-    * [ROS1](notes/ros/ROS学习.md)
+    * [ROS1](notes/ros/ROS1.md)
+    * [ROS2](notes/ros/ROS2.md)
     * [智能车智能视觉](notes/smartcar/smartcar)
     * [STM32CubeMX + RT-Thread](notes/stm32/ROS小车STM32控制部分.md)
     * [OpenCV(C++)](notes/opencv/opencv.md)
