@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>个人笔记</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -11,43 +11,46 @@
 </head>
 
 <body>
+
+
+  <nav>
+    <a href="#/">主页</a>
+  </nav>
   <div id="app"></div>
-  <script>
-    window.$docsify = {
-      name: '',
-      repo: '',
-    }
-  </script>
+
 
   <script>
     window.$docsify = {
       loadSidebar: true,
       subMaxLevel: 2,
+      coverpage: true,
+      latex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']], // default
+        displayMath: [['$$', '$$']],               // default
+      }
     }
   </script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
 
 
-  <script>
-    window.$docsify = {
-      loadNavbar: true,
-        // load from nav.md
-      loadNavbar: 'nav.md'
-    }
-  </script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-
-
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
-
-  <!-- 代码高亮 -->
-  <script src="./static/js/prism-bash.min.js" ></script>
-  <script src="./static/js/prism-php.min.js" ></script>
-  <script src="./static/js/prism-cpp.min.js" ></script>
-
-  
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- LaTeX display engine -->
+  <!-- <script src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+  <!--  docsify-latex plugin -->
+  <!-- <script src="//cdn.jsdelivr.net/npm/docsify-latex@0"></script> -->
+
+<script src="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
+<script src="//cdn.jsdelivr.net/npm/marked@4"></script>
+
+<!-- CDN files for docsify-katex -->
+<script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
+<!-- or <script src="//cdn.jsdelivr.net/gh/upupming/docsify-katex@latest/dist/docsify-katex.js"></script> -->
+
+  <!-- Serach -->
+  <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
 </body>
+
 </html>

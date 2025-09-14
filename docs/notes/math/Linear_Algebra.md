@@ -1,5 +1,7 @@
 # 线性代数
 
+> **公式输入“=”不能单独空一行,否则Ktex插件渲染报错,并且矩阵上下可能需要单独空一行**
+
 ## 概述
 
 ​	随着学习的深入,线性代数在控制论,优化,机器视觉,机器学习等有着非常重要的作用,几乎每一个工程都需要运用到线性代数的知识,将从MIT的线性代数公开课开始,来记录自己对于线性代数的理解.
@@ -7,13 +9,17 @@
 ## 1.方程组的几何解释
 
 例如:
+
+
 $$
 2x - y = 0 \\
 -x + 2y = 3\\
 $$
+
 $$
 \downarrow
 $$
+
 $$
 \begin{bmatrix}
   2 & -1  \\
@@ -22,14 +28,11 @@ $$
 \begin{bmatrix}
   x \\
   y \\
-\end{bmatrix}
-=
-\begin{bmatrix}
+\end{bmatrix}=\begin{bmatrix}
   0 \\
   3 \\
 \end{bmatrix}
 $$
-
 可以写为:
 $$
 A\vec{x} = \vec{b}
@@ -43,9 +46,7 @@ x\begin{bmatrix}
 y\begin{bmatrix}
   -1 \\
   2 \\
-\end{bmatrix}
-=
-\begin{bmatrix}
+\end{bmatrix}=\begin{bmatrix}
   0 \\
   3 \\
 \end{bmatrix}
@@ -107,8 +108,7 @@ y\begin{bmatrix}
 -1\\
 4
 \end{bmatrix}
-=
-\begin{bmatrix}
+=\begin{bmatrix}
   0 \\
   -1 \\
   4
@@ -144,18 +144,20 @@ $$
 ### 线性组合
 
 对于列向量:
+
 $$
 \begin{bmatrix}a&b&c\\d&e&f\\g&h&m\end{bmatrix}
 \begin{bmatrix}a_1\\a_2\\a_3\end{bmatrix}
-=
-a_1\begin{bmatrix}a\\d\\g\end{bmatrix} + a_2\begin{bmatrix}b\\e\\h\end{bmatrix} + a_3\begin{bmatrix}c\\f\\g\end{bmatrix}
+=a_1\begin{bmatrix}a\\d\\g\end{bmatrix} + a_2\begin{bmatrix}b\\e\\h\end{bmatrix} + a_3\begin{bmatrix}c\\f\\g\end{bmatrix}
 $$
+
 对于横向量:
+
 $$
 \begin{bmatrix}a_1&a_2&a_3\end{bmatrix}\begin{bmatrix}a&b&c\\d&e&f\\g&h&m\end{bmatrix}
-=
-\begin{bmatrix}a_1(a+d+g)&a_2(b+e+h)&a_3(c+f+m)\end{bmatrix}
+=\begin{bmatrix}a_1(a+d+g)&a_2(b+e+h)&a_3(c+f+m)\end{bmatrix}
 $$
+
 **问题:**
 
 如何将矩阵$\begin{bmatrix}1&2&1\\0&2&-2\\0&4&1\end{bmatrix}$转化为$\begin{bmatrix}1&2&1\\0&2&-2\\0&0&5\end{bmatrix}$?	
@@ -163,40 +165,50 @@ $$
 观察可得左边矩阵$$(row_2 * -2) + row_3$$可以转化为右边矩阵
 
 通过**线性组合**可得变换矩阵
+
+
 $$
 \begin{bmatrix}1&0&0\\0&1&0\\0&-2&1\end{bmatrix}\begin{bmatrix}1&2&1\\0&2&-2\\0&4&1\end{bmatrix}
-=
-\begin{bmatrix}1&2&1\\0&2&-2\\0&0&5\end{bmatrix}
+=\begin{bmatrix}1&2&1\\0&2&-2\\0&0&5\end{bmatrix}
 $$
 
 ### 置换矩阵$P$
 
 **行变换**:
+
+
 $$
 \begin{bmatrix}0&1\\1&0\end{bmatrix}\begin{bmatrix}a&b\\c&d\end{bmatrix}
-=
-\begin{bmatrix}c&d\\a&b\end{bmatrix}
+=\begin{bmatrix}c&d\\a&b\end{bmatrix}
 $$
+
+
 **列变换**:
+
+
 $$
 \begin{bmatrix}a&b\\c&d\end{bmatrix}\begin{bmatrix}0&1\\1&0\end{bmatrix}
-=
-\begin{bmatrix}b&d\\a&c\end{bmatrix}
+=\begin{bmatrix}b&d\\a&c\end{bmatrix}
 $$
+
+
 
 ### 逆矩阵$A^{-1}$
 
 逆矩阵的作用:**恢复变换矩阵$A$所带来的变化.**
+
+
 $$
 \begin{bmatrix}1&0&0\\3&1&0\\0&0&1\end{bmatrix}
 \begin{bmatrix}1&0&0\\-3&1&0\\0&0&1\end{bmatrix}
-=
-\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}
+=\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}
 $$
 
 $$
 A^{-1}A=I
 $$
+
+
 
 $I$为单位矩阵.
 
@@ -209,11 +221,11 @@ $$
 AB=C
 $$
 
-- $$**考虑点个元素**
+- **考虑点个元素**
   $$
   A_{mn}B_{np}=C_{mp}
   $$
-  设$(i,j)$为第$i$行,第$j$列元素,则:
+  设$(i,j)为第$i$行,第j列元素,则:
   $$
   C_{i,j}=\sum_{k=1}^{n}A_{ik}\cdot B_{kj}
   $$
@@ -239,8 +251,7 @@ $C$:为矩阵$B$的线性组合.
 
 $$
 \begin{bmatrix}2&7\\3&8\\4&9\end{bmatrix}\begin{bmatrix}1&6\\0&0\end{bmatrix}
-=
-\begin{bmatrix}2\\3\\4\end{bmatrix}\begin{bmatrix}1&6\end{bmatrix} +
+=\begin{bmatrix}2\\3\\4\end{bmatrix}\begin{bmatrix}1&6\end{bmatrix} +
 \begin{bmatrix}7\\8\\4\end{bmatrix}\begin{bmatrix}0&0\end{bmatrix}
 $$
 
@@ -249,8 +260,7 @@ $$
 $$
 \begin{bmatrix}A_1&A_2\\A_3&A_4\end{bmatrix}
 \begin{bmatrix}B_1&B_2\\B_3&B_4\end{bmatrix}
-=
-\begin{bmatrix}A_1B_1+A_2B_3&\cdots\\\cdots&\cdots\end{bmatrix}
+=\begin{bmatrix}A_1B_1+A_2B_3&\cdots\\\cdots&\cdots\end{bmatrix}
 $$
 
 ### 逆矩阵
@@ -286,15 +296,13 @@ $$
 $$
 a\begin{bmatrix}1\\2\end{bmatrix}+
 b\begin{bmatrix}3\\7\end{bmatrix}
-=
-\begin{bmatrix}1\\0\end{bmatrix}
+=\begin{bmatrix}1\\0\end{bmatrix}
 $$
 
 $$
 c\begin{bmatrix}1\\2\end{bmatrix}+
 d\begin{bmatrix}3\\7\end{bmatrix}
-=
-\begin{bmatrix}0\\1\end{bmatrix}
+=\begin{bmatrix}0\\1\end{bmatrix}
 $$
 
 类似与解方程组,**有没有一种方法可以同时处理多个方程?**
@@ -345,29 +353,28 @@ $$
 $A$为原始矩阵,$L$(lower triangle)为下三角矩阵,$U$为上三角矩阵.
 
 **目的:**为了让原始矩阵$A$**转化会三角矩阵来减少时间复杂度**.
+
+
 $$
 E_{21}A =U\\
 \downarrow
 \\
 \begin{bmatrix}1&0\\-4&1\end{bmatrix}\begin{bmatrix}2&1\\8&7\end{bmatrix}
-=
-\begin{bmatrix}2&1\\0&3\end{bmatrix}
+=\begin{bmatrix}2&1\\0&3\end{bmatrix}
 $$
 两边同时左乘$E_{21}^{-1}$:
 $$
 E_{21}^{-1}E_{21}A =E_{21}^{-1}U\\
 \downarrow\\
 \begin{bmatrix}1&0\\4&1\end{bmatrix}\begin{bmatrix}1&0\\-4&1\end{bmatrix}\begin{bmatrix}2&1\\8&7\end{bmatrix}
-=
-\begin{bmatrix}1&0\\4&1\end{bmatrix}\begin{bmatrix}2&1\\0&3\end{bmatrix}
+=\begin{bmatrix}1&0\\4&1\end{bmatrix}\begin{bmatrix}2&1\\0&3\end{bmatrix}
 $$
 可得:
 $$
 A =E_{21}^{-1}U\\
 \downarrow\\
 \begin{bmatrix}2&1\\8&7\end{bmatrix}
-=
-\begin{bmatrix}1&0\\4&1\end{bmatrix}\begin{bmatrix}2&1\\0&3\end{bmatrix}
+=\begin{bmatrix}1&0\\4&1\end{bmatrix}\begin{bmatrix}2&1\\0&3\end{bmatrix}
 $$
 令$E_{21}^{-1}=L$:
 $$
@@ -424,8 +431,7 @@ $$
 
 $$
 \begin{bmatrix}1&3\\2&3\\4&7\end{bmatrix}^T
-=
-\begin{bmatrix}1&2&4\\3&3&7\end{bmatrix}
+=\begin{bmatrix}1&2&4\\3&3&7\end{bmatrix}
 $$
 
 ### 置换矩阵
@@ -455,8 +461,7 @@ $$
 $$
 \begin{bmatrix}1&3\\2&3\\4&1\end{bmatrix}
 \begin{bmatrix}1&2&4\\3&3&1\end{bmatrix}
-=
-\begin{bmatrix}10&11&7\\11&13&11\\7&11&9\end{bmatrix}
+=\begin{bmatrix}10&11&7\\11&13&11\\7&11&9\end{bmatrix}
 $$
 
 $$
