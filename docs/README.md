@@ -2,7 +2,7 @@
 
 该文档主要为个人在研究生和本科生阶段的机器人学习记录由于个人能力有限,文档不是很完善,单纯作为一定的记录,并会持续进行补充和修正,仅供参考.
 
-文档主页:https://jinhemu.github.io/docs-learing/#/
+文档主页:https://jinhemu.github.io/Notes
 
 - [电子学社培训](teach/Chapter1/电子学社培训.md)
 
